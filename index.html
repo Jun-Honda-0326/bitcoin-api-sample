@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <title>Bitcoin-api-sample</title>
+</head>
+<body>
+  <div id="app">
+    <h2>Bit Coin Price</h2>
+
+    <!-- 通信エラー時の処理 -->
+    <section v-if="hasError">
+      Error
+    </section>
+
+    <section v-else>
+      <!-- ローディング中の表 -->
+      <div v-if="loading">
+        Loading.......
+      </div>
+      <ul v-cloak>
+        <!-- ビットコインの価格を取得してforで取得す -->
+        <li v-for="(rate, currency) in bpi">
+          {{ currency }}: {{rate.rate_float | currencyDecimal}}
+        </li>
+      </ul>
+    </section>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="main.js"></script>
+  <body>
+
+
+</html>
